@@ -1,0 +1,257 @@
+[
+  {
+    "language_name": "Arabic",
+    "language_code": "ar",
+    "id": 1019
+  },
+  {
+    "language_name": "Bengali",
+    "language_code": "bn",
+    "id": 1056
+  },
+  {
+    "language_name": "Bulgarian",
+    "language_code": "bg",
+    "id": 1020
+  },
+  {
+    "language_name": "Catalan",
+    "language_code": "ca",
+    "id": 1038
+  },
+  {
+    "language_name": "Chinese (simplified)",
+    "language_code": "zh_CN",
+    "id": 1017
+  },
+  {
+    "language_name": "Chinese (traditional)",
+    "language_code": "zh_TW",
+    "id": 1018
+  },
+  {
+    "language_name": "Croatian",
+    "language_code": "hr",
+    "id": 1039
+  },
+  {
+    "language_name": "Czech",
+    "language_code": "cs",
+    "id": 1021
+  },
+  {
+    "language_name": "Danish",
+    "language_code": "da",
+    "id": 1009
+  },
+  {
+    "language_name": "Dutch",
+    "language_code": "nl",
+    "id": 1010
+  },
+  {
+    "language_name": "English",
+    "language_code": "en",
+    "id": 1000
+  },
+  {
+    "language_name": "Estonian",
+    "language_code": "et",
+    "id": 1043
+  },
+  {
+    "language_name": "Filipino",
+    "language_code": "tl",
+    "id": 1042
+  },
+  {
+    "language_name": "Finnish",
+    "language_code": "fi",
+    "id": 1011
+  },
+  {
+    "language_name": "French",
+    "language_code": "fr",
+    "id": 1002
+  },
+  {
+    "language_name": "German",
+    "language_code": "de",
+    "id": 1001
+  },
+  {
+    "language_name": "Greek",
+    "language_code": "el",
+    "id": 1022
+  },
+  {
+    "language_name": "Gujarati",
+    "language_code": "gu",
+    "id": 1072
+  },
+  {
+    "language_name": "Hebrew",
+    "language_code": "iw",
+    "id": 1027
+  },
+  {
+    "language_name": "Hindi",
+    "language_code": "hi",
+    "id": 1023
+  },
+  {
+    "language_name": "Hungarian",
+    "language_code": "hu",
+    "id": 1024
+  },
+  {
+    "language_name": "Icelandic",
+    "language_code": "is",
+    "id": 1026
+  },
+  {
+    "language_name": "Indonesian",
+    "language_code": "id",
+    "id": 1025
+  },
+  {
+    "language_name": "Italian",
+    "language_code": "it",
+    "id": 1004
+  },
+  {
+    "language_name": "Japanese",
+    "language_code": "ja",
+    "id": 1005
+  },
+  {
+    "language_name": "Kannada",
+    "language_code": "kn",
+    "id": 1086
+  },
+  {
+    "language_name": "Korean",
+    "language_code": "ko",
+    "id": 1012
+  },
+  {
+    "language_name": "Latvian",
+    "language_code": "lv",
+    "id": 1028
+  },
+  {
+    "language_name": "Lithuanian",
+    "language_code": "lt",
+    "id": 1029
+  },
+  {
+    "language_name": "Malay",
+    "language_code": "ms",
+    "id": 1102
+  },
+  {
+    "language_name": "Malayalam",
+    "language_code": "ml",
+    "id": 1098
+  },
+  {
+    "language_name": "Marathi",
+    "language_code": "mr",
+    "id": 1101
+  },
+  {
+    "language_name": "Norwegian",
+    "language_code": "no",
+    "id": 1013
+  },
+  {
+    "language_name": "Persian",
+    "language_code": "fa",
+    "id": 1064
+  },
+  {
+    "language_name": "Polish",
+    "language_code": "pl",
+    "id": 1030
+  },
+  {
+    "language_name": "Portuguese",
+    "language_code": "pt",
+    "id": 1014
+  },
+  {
+    "language_name": "Punjabi",
+    "language_code": "pa",
+    "id": 1110
+  },
+  {
+    "language_name": "Romanian",
+    "language_code": "ro",
+    "id": 1032
+  },
+  {
+    "language_name": "Russian",
+    "language_code": "ru",
+    "id": 1031
+  },
+  {
+    "language_name": "Serbian",
+    "language_code": "sr",
+    "id": 1035
+  },
+  {
+    "language_name": "Slovak",
+    "language_code": "sk",
+    "id": 1033
+  },
+  {
+    "language_name": "Slovenian",
+    "language_code": "sl",
+    "id": 1034
+  },
+  {
+    "language_name": "Spanish",
+    "language_code": "es",
+    "id": 1003
+  },
+  {
+    "language_name": "Swedish",
+    "language_code": "sv",
+    "id": 1015
+  },
+  {
+    "language_name": "Tamil",
+    "language_code": "ta",
+    "id": 1130
+  },
+  {
+    "language_name": "Telugu",
+    "language_code": "te",
+    "id": 1131
+  },
+  {
+    "language_name": "Thai",
+    "language_code": "th",
+    "id": 1044
+  },
+  {
+    "language_name": "Turkish",
+    "language_code": "tr",
+    "id": 1037
+  },
+  {
+    "language_name": "Ukrainian",
+    "language_code": "uk",
+    "id": 1036
+  },
+  {
+    "language_name": "Urdu",
+    "language_code": "ur",
+    "id": 1041
+  },
+  {
+    "language_name": "Vietnamese",
+    "language_code": "vi",
+    "id": 1040
+  }
+]
