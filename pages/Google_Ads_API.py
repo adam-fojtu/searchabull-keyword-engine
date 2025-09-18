@@ -131,9 +131,9 @@ if uploaded_file:
                     request.customer_id = config["customer_id"]
 
                     if tool_type == "Historical Volumes":
-                        request.keywords.extend(batch)
+                        request.keywords.extend([str(k) for k in batch])
                     else:
-                        request.keyword_seed.keywords.extend(batch)
+                        request.keyword_seed.keywords.extend([str(k) for k in batch])
 
                     request.geo_target_constants.append(
                         googleads_service.geo_target_constant_path(geo_code)
