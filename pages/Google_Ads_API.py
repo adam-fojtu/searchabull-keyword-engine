@@ -114,6 +114,9 @@ if uploaded_file:
         keyword_plan_idea_service = client.get_service("KeywordPlanIdeaService")
 
         for param in params:
+            if param["target_location"] is None:
+                continue
+
             st.badge(param["target_location"])
             geo_code = int(df_locations.loc[df_locations["location_name"] == param["target_location"], "location_code"].values[0])
             language_code = int(df_languages.loc[df_languages["language_name"] == param["target_language"], "id"].values[0])
