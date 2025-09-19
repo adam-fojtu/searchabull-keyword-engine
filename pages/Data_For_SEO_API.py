@@ -212,6 +212,8 @@ if uploaded_file:
         failed_batches = []
         # --- PROCESSING ---
         for param in params:
+            if param["target_location"] is None:
+                continue
             st.badge(param["target_location"])
             location = int(df_locations.loc[df_locations["location_name"] == param["target_location"], "location_code"].values[0])
             location_code = df_locations.loc[df_locations["location_name"] == param["target_location"], "country_iso_code"].values[0]
