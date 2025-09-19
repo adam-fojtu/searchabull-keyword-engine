@@ -8,6 +8,7 @@ from io import BytesIO
 import datetime as dt
 import time
 import os
+from zoneinfo import ZoneInfo
 
 config = {
     "developer_token": st.secrets["developer_token"],
@@ -106,6 +107,7 @@ if uploaded_file:
         st.stop()
 
     if st.button("🚀 Run Volume Script" if tool_type == "Historical Volumes" else "🚀 Get Keyword Ideas"):
+        start = dt.datetime.now()
         # ✅ Moved client outside loop
         client = GoogleAdsClient.load_from_dict(config)
         googleads_service = client.get_service("GoogleAdsService")
@@ -228,8 +230,11 @@ if uploaded_file:
             final_failed.to_excel(writer, index=False, sheet_name="failed_terms")
 
         location_code = df_locations.loc[df_locations.location_name == param["target_location"], "country_iso_code"].values[0]
-        timestamp = dt.datetime.now().strftime("%d-%m-%Y %H-%M-%S")
+        local_now = dt.datetime.now(ZoneInfo("Europe/Bratislava"))
+        timestamp = local_now.strftime("%d-%m-%Y %H-%M-%S")
         filename = f"{'SEARCH VOLUMES' if tool_type == 'Historical Volumes' else 'KEYWORD IDEAS'} - {category} - {timestamp}.xlsx"
-
+        end = dt.datetime.now()
+        duration = (end - start).total_seconds() / 60
+        st.success(f"Proces done in {duration}")
         st.success("✅ Done! Download your Excel file below:")
         st.download_button("📥 Download Excel", buffer.getvalue(), file_name=filename)
