@@ -235,6 +235,6 @@ if uploaded_file:
         filename = f"{'SEARCH VOLUMES' if tool_type == 'Historical Volumes' else 'KEYWORD IDEAS'} - {category} - {timestamp}.xlsx"
         end = dt.datetime.now()
         duration = (end - start).total_seconds() / 60
-        st.success(f"Proces done in {duration}")
+        st.success(f"Process done in {duration:.2f} minutes")
         st.success("✅ Done! Download your Excel file below:")
         st.download_button("📥 Download Excel", buffer.getvalue(), file_name=filename)
