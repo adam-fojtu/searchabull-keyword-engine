@@ -4,9 +4,10 @@ import os
 # --- LOGIN CONFIG ---
 # Simple hardcoded login
 PASSWORD = st.secrets["STREAMLIT_PASSWORD"]
+USER = st.secrets["USER"]
 VALID_USERS = {
-    "mike": PASSWORD,
-    "adam": PASSWORD
+    USER[0]: PASSWORD,
+    USER[1]: PASSWORD
 }
 
 # Set wide layout and page title

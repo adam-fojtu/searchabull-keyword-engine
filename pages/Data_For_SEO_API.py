@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 from io import BytesIO
 import random
 import yaml
-
+from zoneinfo import ZoneInfo
 
 if "logged_in" not in st.session_state or not st.session_state.logged_in:
     st.error("🚫 You must be logged in to access this page.")
@@ -179,6 +179,7 @@ if uploaded_file:
     if st.button("🚀 Run Volume Script" if TOOL_TYPE == "Historical Volumes" else "🚀 Get Keyword Ideas"):
         # --- ENV + AUTH ---
         # load_dotenv()
+        start = dt.datetime.now()
         login = os.getenv("DATAFORSEO_LOGIN")
         password = os.getenv("DATAFORSEO_PASSWORD")
         auth_string = f"{login}:{password}"
@@ -211,6 +212,8 @@ if uploaded_file:
         failed_batches = []
         # --- PROCESSING ---
         for param in params:
+            if param["target_location"] is None:
+                continue
             st.badge(param["target_location"])
             location = int(df_locations.loc[df_locations["location_name"] == param["target_location"], "location_code"].values[0])
             location_code = df_locations.loc[df_locations["location_name"] == param["target_location"], "country_iso_code"].values[0]
@@ -315,10 +318,14 @@ if uploaded_file:
             idx += 12
 
         # --- EXPORT ---
-        timestamp = dt.datetime.now().strftime("%d-%m-%Y %H-%M-%S")
+        local_now = dt.datetime.now(ZoneInfo("Europe/Bratislava"))
+        timestamp = local_now.strftime("%d-%m-%Y %H-%M-%S")
         filename = f"SEARCH VOLUMES - {CATEGORY} - {timestamp}.xlsx"
         buffer = BytesIO()
         df_volumes.to_excel(buffer, index=False, engine="openpyxl")
+        end = dt.datetime.now()
+        duration = (end - start).total_seconds() / 60
+        st.success(f"Process done in {duration:.2f} minutes")
         st.success("✅ Done! Download your Excel file below:")
         st.download_button("📥 Download Excel", buffer.getvalue(), file_name=filename)
 
