@@ -225,7 +225,7 @@ if uploaded_file:
         # ✅ Use xlsxwriter for better performance
         with pd.ExcelWriter(buffer, engine="openpyxl") as writer:
             final_data.to_excel(writer, index=False, sheet_name="data")
-            final_failed.to_excel(writer, index=False, sheet_name="failed_terms")
+            # final_failed.to_excel(writer, index=False, sheet_name="failed_terms")
 
         location_code = df_locations.loc[df_locations.location_name == param["target_location"], "country_iso_code"].values[0]
         timestamp = dt.datetime.now().strftime("%d-%m-%Y %H-%M-%S")
