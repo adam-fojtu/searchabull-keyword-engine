@@ -237,7 +237,7 @@ if uploaded_file:
         location_code = df_locations.loc[df_locations.location_name == param["target_location"], "country_iso_code"].values[0]
         local_now = dt.datetime.now(ZoneInfo("Europe/Bratislava"))
         timestamp = local_now.strftime("%d-%m-%Y %H-%M-%S")
-        filename = f"{'SEARCH VOLUMES' if tool_type == 'Historical Volumes' else 'KEYWORD IDEAS'} - {category} - {timestamp}.xlsx"
+        filename = f"{'SEARCH VOLUMES' if tool_type == 'Historical Volumes' else 'KEYWORD IDEAS'} - {category} - {timestamp}.csv"
         end = dt.datetime.now()
         duration = (end - start).total_seconds() / 60
         st.success(f"Process done in {duration:.2f} minutes")
