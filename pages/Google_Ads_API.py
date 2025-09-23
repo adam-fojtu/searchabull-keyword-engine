@@ -228,11 +228,10 @@ if uploaded_file:
         final_data.sort_values(by=final_data.columns[-1], ascending=False, inplace=True)
 
         # ✅ Use xlsxwriter for better performance
-        # with pd.ExcelWriter(buffer, engine="openpyxl") as writer:
-        #     final_data.to_excel(writer, index=False, sheet_name="data")
-        #     # final_failed.to_excel(writer, index=False, sheet_name="failed_terms")
+        with pd.ExcelWriter(buffer, engine="openpyxl") as writer:
+            final_data.to_excel(writer, index=False, sheet_name="data")
+            final_failed.to_excel(writer, index=False, sheet_name="failed_terms")
 
-        final_data.to_csv(buffer, encoding="utf-8", index=False)
 
         location_code = df_locations.loc[df_locations.location_name == param["target_location"], "country_iso_code"].values[0]
         local_now = dt.datetime.now(ZoneInfo("Europe/Bratislava"))
@@ -241,5 +240,5 @@ if uploaded_file:
         end = dt.datetime.now()
         duration = (end - start).total_seconds() / 60
         st.success(f"Process done in {duration:.2f} minutes")
-        st.success("✅ Done! Download your CSV file below:")
-        st.download_button("📥 Download CSV", buffer.getvalue(), file_name=filename)
+        st.success("✅ Done! Download your Excel file below:")
+        st.download_button("📥 Download Excel", buffer.getvalue(), file_name=filename)
