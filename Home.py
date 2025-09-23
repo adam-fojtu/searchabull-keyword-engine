@@ -42,7 +42,7 @@ with st.sidebar:
     st.text_input("User", value=st.session_state.user, key="user_display", disabled=True)
 
 
-col1, col2 = st.columns(2)
+col1, col2, col3 = st.columns(3)
 
 with col1:
     st.subheader("🔑 Monthly Access Tool")
@@ -65,5 +65,17 @@ with col2:
              """)
     if st.button("Go to DataForSEO API Tool"):
         st.switch_page("pages/Data_For_SEO_API.py")
+
+
+with col3:
+    st.subheader("🔍 DeepL Translation Tool")
+    st.write("""Translate Keywords
+- Costs 20€ per 1,000,000 characters\n
+- For Historical Volumes it can batch up to 1000 keywords at a time (per API request)\n
+- For Keyword Ideas it can batch up to 20 keywords at a time (per API request)\n
+- The API access costs 7.5 cents per request!
+             """)
+    if st.button("Go to DeepL Translation Tool"):
+        st.switch_page("pages/DeepL_Translation_API.py")
 
 st.markdown("---")
