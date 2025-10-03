@@ -13,6 +13,9 @@ if uploaded_file:
     st.write(df.head())
     num_cols = df.columns.difference(["Keyword", "Total Volume"])
 
+    if any(isinstance(col, (dt.datetime, pd.Timestamp)) for col in num_cols):
+        num_cols = [col.strftime("%b-%y") for col in num_cols]
+
     df["VolumePatternKey"] = df[num_cols].astype(str).agg('|'.join, axis=1)
 
     # Assign GroupIDs in order of first appearance
