@@ -31,7 +31,7 @@ if uploaded_file:
     # Drop helper column if not needed
     df.drop(columns=["VolumePatternKey"], inplace=True)
 
-    filename = f"group_id_table {dt.datetime.now().strftime('%d-%m-%Y %H-%M-%S')}"
+    filename = f"group_id_table {dt.datetime.now().strftime('%d-%m-%Y %H-%M-%S')}.xlsx"
 
     buffer = BytesIO()
 
