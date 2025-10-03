@@ -4,9 +4,10 @@ import datetime as dt
 
 st.title("Get Group IDs")
 
-df = st.file_uploader("📁 Upload your keywords Excel file", type=["xlsx"])
+uploaded_file = st.file_uploader("📁 Upload your keywords Excel file", type=["xlsx"])
 
-if df:
+if uploaded_file:
+    df = pd.read_excel(uploaded_file)
     st.success(f"Loaded {df.shape[0]} keywords.")
     st.write(df.head())
     num_cols = df.columns.difference(["Keyword", "Total Volume"])
