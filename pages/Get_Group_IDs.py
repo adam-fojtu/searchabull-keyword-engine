@@ -14,7 +14,8 @@ if uploaded_file:
     num_cols = df.columns.difference(["Keyword", "Total Volume"])
 
     if any(isinstance(col, (dt.datetime, pd.Timestamp)) for col in num_cols):
-        num_cols = [col.strftime("%b-%y") for col in num_cols]
+        df.rename(columns={col: col.strftime("%b-%y") for col in num_cols}, inplace=True)
+        num_cols = df.columns.difference(["Keyword", "Total Volume"])
 
     df["VolumePatternKey"] = df[num_cols].astype(str).agg('|'.join, axis=1)
 
