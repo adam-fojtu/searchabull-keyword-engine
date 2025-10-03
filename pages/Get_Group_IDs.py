@@ -1,6 +1,7 @@
 import pandas as pd
 import streamlit as st
 import datetime as dt
+from io import BytesIO
 
 st.title("Get Group IDs")
 
@@ -32,4 +33,8 @@ if uploaded_file:
 
     filename = f"group_id_table {dt.datetime.now().strftime('%d-%m-%Y %H-%M-%S')}"
 
-    st.download_button("Download Table with Group IDs", df, file_name=filename)
+    buffer = BytesIO()
+
+    df.to_excel(buffer)
+
+    st.download_button("Download Table with Group IDs", buffer.getvalue(), file_name=filename)
