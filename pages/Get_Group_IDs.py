@@ -19,7 +19,7 @@ if uploaded_file:
                 df[col] = df[col].astype(int)
         df["Total Volume"] = df[num_cols].sum(axis=1)
     
-    df.sort_values(by="Total Volume", inplace=True)
+    df.sort_values(by="Total Volume", inplace=True, ascending=False)
     num_cols = df.columns.difference(["Keyword", "Total Volume"])
 
     if any(isinstance(col, (dt.datetime, pd.Timestamp)) for col in num_cols):
