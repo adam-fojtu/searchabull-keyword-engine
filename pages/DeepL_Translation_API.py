@@ -80,12 +80,13 @@ if FILE_TO_TRANSLATE:
     texts_to_translate = []
     rows_to_update = []
     batch_size = 20  # Reduced batch size to mitigate potential API issues
+    
+if st.button("Translate"):
     total_batches = keywords.shape[0] // batch_size + (1 if keywords.shape[0] % batch_size != 0 else 0)
     progress_bar = st.progress(0)
     status_text = st.empty()
     batch_num = 0
 
-if st.button("Translate"):
     # Loop through each row in the specified column
     with st.spinner("⏳ Processing..."):
         for row in ws.iter_rows(min_row=ROW_TO_START_FROM, min_col=COLUMN_TO_BE_TRANSLATED, max_col=COLUMN_TO_BE_TRANSLATED):
