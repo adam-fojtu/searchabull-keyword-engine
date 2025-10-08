@@ -131,6 +131,14 @@ if st.button("Translate"):
             else:
                 print(f"Translation failed for row {rows_to_update[i]}: {texts_to_translate[i]}")
 
+        batch_num += 1
+        progress = batch_num / total_batches
+        progress_bar.progress(progress)
+        status_text.markdown(f"""
+        <b>📦 Batch {batch_num} of {total_batches}</b>  
+        <b>✅ Progress: {int(progress * 100)}%</b>
+        """, unsafe_allow_html=True)
+
     # Save the changes to the Excel file
     filename = f'translated_file_{ORIGINAL_LANGUAGE + "_" + str(TIME)}.xlsx'
     buffer = BytesIO()
