@@ -80,33 +80,46 @@ if FILE_TO_TRANSLATE:
     texts_to_translate = []
     rows_to_update = []
     batch_size = 20  # Reduced batch size to mitigate potential API issues
+    total_batches = keywords.shape[0] // batch_size + (1 if keywords.shape[0] % batch_size != 0 else 0)
+    progress_bar = st.progress(0)
+    status_text = st.empty()
+    batch_num = 0
 
 if st.button("Translate"):
     # Loop through each row in the specified column
-    for row in ws.iter_rows(min_row=ROW_TO_START_FROM, min_col=COLUMN_TO_BE_TRANSLATED, max_col=COLUMN_TO_BE_TRANSLATED):
-        search_query = row[0].value  # Accessing value in the column
-        current_row = row[0].row
+    with st.spinner("⏳ Processing..."):
+        for row in ws.iter_rows(min_row=ROW_TO_START_FROM, min_col=COLUMN_TO_BE_TRANSLATED, max_col=COLUMN_TO_BE_TRANSLATED):
+            search_query = row[0].value  # Accessing value in the column
+            current_row = row[0].row
 
-        if search_query:
-            # Check if the corresponding cell in the target column is empty
-            if not ws.cell(row=current_row, column=starting_column).value:
-                texts_to_translate.append(search_query)
-                rows_to_update.append(current_row)
+            if search_query:
+                # Check if the corresponding cell in the target column is empty
+                if not ws.cell(row=current_row, column=starting_column).value:
+                    texts_to_translate.append(search_query)
+                    rows_to_update.append(current_row)
 
-            # When the batch is full, send it for translation
-            if len(texts_to_translate) >= batch_size:
-                translations = translate_batch(texts_to_translate, target_language=TARGET_LANGUAGE)
+                # When the batch is full, send it for translation
+                if len(texts_to_translate) >= batch_size:
+                    translations = translate_batch(texts_to_translate, target_language=TARGET_LANGUAGE)
 
-                # Write the translations back into the target column
-                for i, translation in enumerate(translations):
-                    if translation is not None:
-                        ws.cell(row=rows_to_update[i], column=starting_column, value=translation)
-                    else:
-                        print(f"Translation failed for row {rows_to_update[i]}: {texts_to_translate[i]}")
+                    # Write the translations back into the target column
+                    for i, translation in enumerate(translations):
+                        if translation is not None:
+                            ws.cell(row=rows_to_update[i], column=starting_column, value=translation)
+                        else:
+                            print(f"Translation failed for row {rows_to_update[i]}: {texts_to_translate[i]}")
 
-                # Clear the batch lists
-                texts_to_translate.clear()
-                rows_to_update.clear()
+                    # Clear the batch lists
+                    texts_to_translate.clear()
+                    rows_to_update.clear()
+
+                    batch_num += 1
+                    progress = batch_num / total_batches
+                    progress_bar.progress(progress)
+                    status_text.markdown(f"""
+                    <b>📦 Batch {batch_num} of {total_batches}</b>  
+                    <b>✅ Progress: {int(progress * 100)}%</b>
+                    """, unsafe_allow_html=True)
 
     # If there are any remaining texts to be translated (less than the batch size)
     if texts_to_translate:
