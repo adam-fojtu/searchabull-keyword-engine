@@ -322,7 +322,10 @@ if uploaded_file:
         timestamp = local_now.strftime("%d-%m-%Y %H-%M-%S")
         filename = f"SEARCH VOLUMES - {CATEGORY} - {timestamp}.xlsx"
         buffer = BytesIO()
-        df_volumes.to_excel(buffer, index=False, engine="openpyxl")
+
+        with st.spinner("⏳ Creating Excel file..."):
+            df_volumes.to_excel(buffer, index=False, engine="openpyxl")
+            
         end = dt.datetime.now()
         duration = (end - start).total_seconds() / 60
         st.success(f"Process done in {duration:.2f} minutes")

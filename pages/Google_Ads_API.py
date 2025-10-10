@@ -228,9 +228,10 @@ if uploaded_file:
         final_data.sort_values(by=final_data.columns[-1], ascending=False, inplace=True)
 
         # ✅ Use xlsxwriter for better performance
-        with pd.ExcelWriter(buffer, engine="openpyxl") as writer:
-            final_data.to_excel(writer, index=False, sheet_name="data")
-            final_failed.to_excel(writer, index=False, sheet_name="failed_terms")
+        with st.spinner("⏳ Creating Excel file..."):
+            with pd.ExcelWriter(buffer, engine="openpyxl") as writer:
+                final_data.to_excel(writer, index=False, sheet_name="data")
+                final_failed.to_excel(writer, index=False, sheet_name="failed_terms")
 
 
         location_code = df_locations.loc[df_locations.location_name == param["target_location"], "country_iso_code"].values[0]
