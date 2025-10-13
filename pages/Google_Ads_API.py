@@ -47,7 +47,8 @@ locations_list = [
     "Norway", "Denmark", "Finland", "Slovakia", "Czechia", "Poland", "Romania",
     "Hungary", "India", "Indonesia", "Australia", "New Zealand", "Brazil",
     "Colombia", "Argentina", "Chile", "United States", "Canada", "Mexico", "Saudi Arabia",
-    "Japan"
+    "Japan", "Hamburg,Germany", "Berlin,Germany", "Brussels,Belgium", "Valencian Community,Spain",
+    "Rome,Lazio,Italy", "Milan,Lombardy,Italy"
 ]
 
 languages_list = [
