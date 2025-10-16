@@ -39,7 +39,7 @@ pandas
 pillow
 propcache
 proto-plus
-protobuf==3.20.3
+protobuf>=4.25.0,<7.0.0
 pyarrow==21.0.0
 pyasn1
 pyasn1_modules
@@ -60,7 +60,7 @@ rpds-py
 rsa
 six
 smmap
-streamlit
+streamlit>=1.38.0
 tenacity
 toml
 tornado
