@@ -48,6 +48,13 @@ popular_countries = [
     "Denmark",
     "Portugal",
     "Saudi Arabia",
+    "Hamburg,Germany", 
+    "Berlin,Germany", 
+    "Brussels,Belgium", 
+    "Valencian Community,Spain",
+    "Rome,Lazio,Italy", 
+    "Milan,Lombardy,Italy", 
+    "Hanover,Lower Saxony,Germany"
     
 ]
 language_dict = {
