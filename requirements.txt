@@ -60,7 +60,7 @@ rpds-py
 rsa
 six
 smmap
-streamlit==1.44.0
+streamlit==1.49.1
 tenacity
 toml
 tornado
